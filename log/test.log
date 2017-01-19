@@ -1558,3 +1558,142 @@ Processing by UserSessionsController#new as HTML
   Rendered user_sessions/new.html.erb within layouts/application (0.0ms)
 Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (191.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "employee_recognition_test"[0m
+  [1m[35m (444.5ms)[0m  [1m[35mCREATE DATABASE "employee_recognition_test" ENCODING = 'utf8'[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (21.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "crypted_password" character varying NOT NULL, "password_salt" character varying NOT NULL, "persistence_token" character varying, "perishable_token" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170117012345')[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2017-01-19 22:26:22 UTC], ["updated_at", 2017-01-19 22:26:22 UTC]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (11.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 12ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (6.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "email1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "dc7503f466a4517bd5a44c62d6cf4b670b3bd12983ae98588f62260e3a2a306bb2d9cea974a232e9683ffa89658ceae4571ab2425097e732a2f5de36f0f90f03"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "crypted_password", "password_salt", "persistence_token", "perishable_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Sandor Clegane"], ["email", "email1@example.com"], ["crypted_password", "400$8$33$78ea0a9672602d02$29e9a2c1f7072405a471b76bfa0a1ff49530f6c8ccdf6bc0c5ad00f5d9166b2d"], ["password_salt", "C2QbM4T6A2TAciuEQhe"], ["persistence_token", "dc7503f466a4517bd5a44c62d6cf4b670b3bd12983ae98588f62260e3a2a306bb2d9cea974a232e9683ffa89658ceae4571ab2425097e732a2f5de36f0f90f03"], ["perishable_token", "aRILVKX527Njbs4BVZl"], ["created_at", 2017-01-19 22:26:23 UTC], ["updated_at", 2017-01-19 22:26:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UserSessionsController#create as HTML
+  Parameters: {"user_session"=>{"email"=>"email1@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE LOWER("users"."email") = LOWER($1) ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "email1@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "perishable_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["perishable_token", "9gMtIeNMwaNrQplpGYpQ"], ["updated_at", 2017-01-19 22:26:23 UTC], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/1
+Completed 302 Found in 129ms (ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "email2@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "60c70501f34630f493357d34d0164d689ecc51b69583bdd2e4f54feb95dbff702b9fca01db46d94f80e8ce67517a0dccffb083ec21b36127b8aa6b21926a4e9b"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "crypted_password", "password_salt", "persistence_token", "perishable_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Brienne of Tarth"], ["email", "email2@example.com"], ["crypted_password", "400$8$33$52a252d6d0f01ef1$8f702a9dc7f4349120162235e240cebf7544c7f9a1cfbe763548e4fbacd48c62"], ["password_salt", "tuwfIVVVmBAB8q9Xhp4"], ["persistence_token", "60c70501f34630f493357d34d0164d689ecc51b69583bdd2e4f54feb95dbff702b9fca01db46d94f80e8ce67517a0dccffb083ec21b36127b8aa6b21926a4e9b"], ["perishable_token", "UX59OXzadd8DiwNpTJIt"], ["created_at", 2017-01-19 22:26:23 UTC], ["updated_at", 2017-01-19 22:26:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UserSessionsController#create as HTML
+  Parameters: {"user_session"=>{"email"=>"email2@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE LOWER("users"."email") = LOWER($1) ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "email2@example.com"], ["LIMIT", 1]]
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 115ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "email3@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "2a545465e618403e44df3924e7a0da62b19e8c403edbf26e6825e184fddced41a7b1e913f5eac323c14ae24e7282a409465180b1b493b174d3d6fa5b252fc018"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "crypted_password", "password_salt", "persistence_token", "perishable_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Ygritte"], ["email", "email3@example.com"], ["crypted_password", "400$8$3c$1532ba2c4629f04a$77953443e77f328b37bb61a1b860136ce1f490a828d5aa6494f3f22266612f76"], ["password_salt", "hBUbwyqu7qusBF4tXS79"], ["persistence_token", "2a545465e618403e44df3924e7a0da62b19e8c403edbf26e6825e184fddced41a7b1e913f5eac323c14ae24e7282a409465180b1b493b174d3d6fa5b252fc018"], ["perishable_token", "yhIZLQlEQ8iWxHTWpF"], ["created_at", 2017-01-19 22:26:24 UTC], ["updated_at", 2017-01-19 22:26:24 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UserSessionsController#create as HTML
+  Parameters: {"user_session"=>{"email"=>"unregistered@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE LOWER("users"."email") = LOWER($1) ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "unregistered@example.com"], ["LIMIT", 1]]
+  Rendering user_sessions/new.html.erb within layouts/application
+  Rendered user_sessions/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "email@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "ab1dc82b1d27ac2e74088d5187cf0ed6b52dbf1d2a39d79473b8f880700e292646b4d12b1d8d78a23f73440eecd8f03448742d8adb56bb563dcd6d151e90cfc5"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "crypted_password", "password_salt", "persistence_token", "perishable_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Ned Stark"], ["email", "email@example.com"], ["crypted_password", "400$8$3f$2bade6594d109330$a708616d1ad3ff85d8bd1ecf0f02862ccdc72998d4555a87e499fd3e3ced97b9"], ["password_salt", "yRPLdGus0ehF2owby4hC"], ["persistence_token", "ab1dc82b1d27ac2e74088d5187cf0ed6b52dbf1d2a39d79473b8f880700e292646b4d12b1d8d78a23f73440eecd8f03448742d8adb56bb563dcd6d151e90cfc5"], ["perishable_token", "6kKYgvfJPUunaIxCQfvR"], ["created_at", 2017-01-19 22:26:24 UTC], ["updated_at", 2017-01-19 22:26:24 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UserSessionsController#create as HTML
+  Parameters: {"user_session"=>{"email"=>"email@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE LOWER("users"."email") = LOWER($1) ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "email@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "perishable_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["perishable_token", "o7SLuYb2nckjpJdx2vXP"], ["updated_at", 2017-01-19 22:26:24 UTC], ["id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/4
+Completed 302 Found in 144ms (ActiveRecord: 0.7ms)
+Processing by UserSessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Redirected to http://test.host/user_session/new
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "ed540abcfa307ab7f76874a6102ab32cfaeb61e14d615274366f60589353a2cd61b27fe60b2ec5706d6b47d3b1af88580c1cc4172f179ac2ef1cb9483baadedf"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "97308f324db45f2744b022437a11930e66fa661cc59a7e2e4a538238481196201304ef5cdabd786ce70ce3ededfffd358a95580cc49fc570856d4fc7583cd349"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "27b0078fefa097b032973f76d5d3aa58f6c7d884269aacce2885fbc1f56f654ea6229b4879b2adb94df530b543014bc1cb13b6b192e68415eca3dd48bae3d8ae"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "90daee3b90f164437f847e9d473581f5bee4816e412f5a5a646f2bb9b85e1eeadcc2d4a459630d59253032b65f77993c1c5990ac6c80567fda50a5cac2eb9fe7"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "email4@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "2d5449caad0e37b3fa9704c7f0665dfd8ef499e50cf1e0bb169e09bf737eb1f2fd25c8ba593266b2bf19bb666997579feee19b797e4fbd9bce9a56a5e2d8b5e0"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "crypted_password", "password_salt", "persistence_token", "perishable_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Robb Stark"], ["email", "email4@example.com"], ["crypted_password", "400$8$2c$054f4f21f783ce66$ae48786e14ef0220de0a12a3028911a158ac94de5e860e823bfc34ce0bfd9d96"], ["password_salt", "155TNVj9GNpQDXMIcka"], ["persistence_token", "2d5449caad0e37b3fa9704c7f0665dfd8ef499e50cf1e0bb169e09bf737eb1f2fd25c8ba593266b2bf19bb666997579feee19b797e4fbd9bce9a56a5e2d8b5e0"], ["perishable_token", "RdB9DknW110Q6AHSK0b"], ["created_at", 2017-01-19 22:26:24 UTC], ["updated_at", 2017-01-19 22:26:24 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "email5@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = $1 LIMIT $2[0m  [["persistence_token", "17c4475f7938fd359144c96fe0dda6e72bc5ba79376e1a3e578eee3e6827f7bb1c054a34937b56dc7b882b4d33db8ca83a79faef343c667a93cb688ad24620d2"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m

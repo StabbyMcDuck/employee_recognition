@@ -1,0 +1,23 @@
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+  Exclude:
+    #factories
+    - 'spec/factories/**/*'
+    - 'db/**/*'
+
+LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+  - 'config/routes/rb'
+  - 'lib/tasks/**/*.rake'
+  - 'spec/**/*.rb'
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+  FunctionalMethods:
+    - let
+    - let!
+    - subject

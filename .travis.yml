@@ -3,3 +3,5 @@ rvm:
 - 2.3.3
 services:
   - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml

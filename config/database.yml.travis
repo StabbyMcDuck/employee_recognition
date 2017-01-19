@@ -18,8 +18,4 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: employee_recognition_test
-
-production:
-  <<: *default
-  database: employee_recognition_production
+  database: travis_ci_test

@@ -43,6 +43,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Factory Girl testing
   gem 'factory_girl_rails', '~> 4.8'
+  # Dependency of Rubocop. Rainbow 2.2.1 fails to build on Travis CI
+  # See https://travis-ci.org/StabbyMcDuck/employee_recognition/builds/194126335
+  gem 'rainbow', '< 2.2.1'
   # Rspec testing for Rails
   gem 'rspec-rails', '~> 3.5'
   # Rubocop style checking

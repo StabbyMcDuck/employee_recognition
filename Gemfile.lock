@@ -58,7 +58,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.12.2)
+    coffee-script-source (1.8.0)
     concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
@@ -228,6 +228,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
+  coffee-script-source (= 1.8.0)
   factory_girl_rails (~> 4.8)
   faker (~> 1.6)
   jbuilder (~> 2.5)

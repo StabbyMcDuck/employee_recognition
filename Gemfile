@@ -9,6 +9,10 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 
+#for bootsrap
+gem 'bootstrap-sass', '~> 3.3.6'
+
+
 # Authentication for users
 gem 'authlogic', '~> 3.5'
 # Postgres SQL

@@ -45,6 +45,11 @@ GEM
       activesupport (>= 3.2, < 5.1)
       request_store (~> 1.0)
       scrypt (>= 1.2, < 4.0)
+    autoprefixer-rails (6.7.0)
+      execjs
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -212,6 +217,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic (~> 3.5)
+  bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
   factory_girl_rails (~> 4.8)
@@ -236,4 +242,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.1
+   1.14.2

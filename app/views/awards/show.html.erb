@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @award.type %>
+</p>
+
+<p>
+  <strong>Employeename:</strong>
+  <%= @award.employeename %>
+</p>
+
+<p>
+  <strong>Employeeemail:</strong>
+  <%= @award.employeeemail %>
+</p>
+
+<p>
+  <strong>Datecreated:</strong>
+  <%= @award.datecreated %>
+</p>
+
+<p>
+  <strong>Grantedby:</strong>
+  <%= @award.grantedby %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @award.user %>
+</p>
+
+<%= link_to 'Edit', edit_award_path(@award) %> |
+<%= link_to 'Back', awards_path %>

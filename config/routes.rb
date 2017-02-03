@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
+  resources :awards
   resource :user_session, except: :show
   resources :users
 

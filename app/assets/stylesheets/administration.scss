@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //fix navbar overlap
-body { 
-    padding-top: 65px; 
+body {
+    padding-top: 65px;
 }
 
 .navbar{
@@ -12,7 +12,7 @@ body {
 	color: #ffffff;
   	border-radius:0;
     margin-bottom: 0;
-	
+
 }
 
 
@@ -24,10 +24,48 @@ body {
 
 
 
-.table TH{
-	background-color: #84e9ed;
+
+.buttonsize {
+	width: 250px;
 }
 
-.btn {
-	width:20%;
+
+
+.container-0{
+	display:flex;
+	background-color: #84e9ed;
+	height: 35px;
+	justify-content: center;
+    align-items: center;
+
+}
+
+.box-0{
+  	flex: 1 1 50%;
+  	padding: 1em;
+
+
+}
+
+.container-1{
+	display: flex;
+		justify-content: flex-end;
+
+}
+
+.container-1 div {
+	//border: 1px #ccc solid;
+	padding: 15px;
+}
+
+.box-1 {
+	flex:2;
+}
+
+.box-2{
+	flex:1;
+}
+
+.box-3 {
+	flex:1;
 }

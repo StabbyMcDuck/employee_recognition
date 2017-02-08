@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(user_session_params)
     if @user_session.save
-      redirect_to user_url(@user_session.user)
+      flash[:notice] = 'User session successfully started'
     else
       render action: :new
     end

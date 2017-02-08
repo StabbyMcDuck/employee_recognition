@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :award do
-    type ""
-    employeename "MyString"
+    awardtype "MyString"
+    employeeename "MyString"
     employeeemail "MyString"
-    datecreated "2017-02-02 19:14:57"
+    datecreated "2017-02-07 19:57:45"
     grantedby "MyString"
-    user nil
   end
 end

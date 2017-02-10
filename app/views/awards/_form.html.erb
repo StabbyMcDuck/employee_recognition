@@ -2,7 +2,6 @@
   <% if award.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(award.errors.count, "error") %> prohibited this award from being saved:</h2>
-
       <ul>
       <% award.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,6 +9,26 @@
       </ul>
     </div>
   <% end %>
+
+ <div class="field">
+    <%= f.label "Award type: " %>
+    <%= f.text_field :awardtype %>
+  </div>
+
+   <div class="field">
+    <%= f.label "Award granted to employee: " %>
+    <%= f.text_field :employeename %>
+  </div>
+
+   <div class="field">
+    <%= f.label "Employee email: " %>
+    <%= f.text_field :employeeemail %>
+  </div>
+
+   <div class="field">
+    <%= f.label "Granted by: " %>
+    <%= f.select :grantedby, options_for_select(User.all.map{|s|[s.name, s.id]}) %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

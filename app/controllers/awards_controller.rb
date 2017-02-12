@@ -25,7 +25,6 @@ class AwardsController < ApplicationController
   # POST /awards.json
   def create
     @award = Award.new(award_params)
-
     respond_to do |format|
       if @award.save
         format.html { redirect_to @award, notice: 'Award was successfully created.' }
@@ -68,7 +67,7 @@ class AwardsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def award_params
-      params.fetch(:award, {})
+   def award_params
+      params.require(:award).permit(:awardtype, :employeename, :employeeemail, :grantedby)
     end
 end

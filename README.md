@@ -8,5 +8,5 @@ The live site can be viewed at http://rocky-ridge-55037.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/StabbyMcDuck/employee_recognition.svg?branch=master)](https://travis-ci.org/StabbyMcDuck/employee_recognition)
 
-Running on Ruby 2.3.0
+Running on Ruby 2.3.3
 

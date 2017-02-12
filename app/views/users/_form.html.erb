@@ -31,6 +31,14 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
+  <br>
+
+  <%= f.radio_button :roletype, 'admin' %>
+  <%= label :roletype, 'Administrator' %>
+  <%= f.radio_button :roletype, 'nonadmin' %>
+  <%= label :roletype, 'Non-Admin' %>
+   <br>
+
   <div class="actions">
     <%= f.submit %>
   </div>

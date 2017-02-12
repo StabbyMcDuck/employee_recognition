@@ -4,12 +4,18 @@
 class UserSessionsController < ApplicationController
   def new
     @user_session = UserSession.new
+
   end
 
   def create
     @user_session = UserSession.new(user_session_params)
     if @user_session.save
       flash[:notice] = 'User session successfully started'
+      if current_user.admin?
+        redirect_to '/administration'
+      elsif current_user.nonadmin?
+        redirect_to '/awards'
+      end
     else
       render action: :new
     end

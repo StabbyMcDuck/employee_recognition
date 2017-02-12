@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   get "/awards/new", to: "awards#new", as: "createaward"
 
+  delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
 end

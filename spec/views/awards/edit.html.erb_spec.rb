@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "awards/edit", type: :view do
   before(:each) do
-    @award = assign(:award, Award.create!())
+    @award = assign(:award, Award.create())
   end
 
   it "renders the edit award form" do

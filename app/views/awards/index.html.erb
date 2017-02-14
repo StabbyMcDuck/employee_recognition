@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-# <% if current_user %>
-#   <%=h current_user.email %>
-#             <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
-# <% end %>
+<!-- <% #if current_user %>
+   <%=h current_user.email %>
+             <li><%= link_to #'Sign Out', sign_out_path, method: :delete %></li>
+ <% #end %> -->
 
 <h1>Awards</h1>
 
@@ -18,7 +18,7 @@
     <% @awards.each do |award| %>
       <tr>
         <td><%= link_to 'Show', award %></td>
-        <td><%= link_to 'Edit', edit_award_path(award) %></td>
+      <!--  <td><%= link_to #'Edit', edit_award_path(award) %></td> -->
         <td><%= link_to 'Destroy', award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

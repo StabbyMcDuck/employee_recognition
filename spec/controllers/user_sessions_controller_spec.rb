@@ -17,7 +17,7 @@ RSpec.describe UserSessionsController do
   end
 
   describe 'POST create' do
-    let!(:user) do
+    let(:user) do
       FactoryGirl.create :user, password: password
     end
 
@@ -81,7 +81,7 @@ RSpec.describe UserSessionsController do
     end
 
     # Let!s
-    let!(:user) do
+    let(:user) do
       FactoryGirl.create(:user, email: email, password: password)
     end
 

@@ -32,11 +32,6 @@ RSpec.describe UserSessionsController do
         }
       end
 
-      it "redirects to user's profile" do
-        post :create, params: params
-
-        expect(subject).to redirect_to(user_url(user))
-      end
     end
 
     context 'without valid params' do

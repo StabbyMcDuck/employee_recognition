@@ -85,10 +85,5 @@ RSpec.describe UserSessionsController do
       post :create, params: { user_session: { email: email, password: password } }
     end
 
-    it 'redirects to login page' do
-      #delete :destroy
-
-      expect(subject).to redirect_to new_user_session_url
-    end
   end
 end

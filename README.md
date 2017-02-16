@@ -10,3 +10,7 @@ The live site can be viewed at http://rocky-ridge-55037.herokuapp.com/
 
 Running on Ruby 2.3.3
 
+## Development 
+
+Copy the example database config `config/database.yml.example` to `config/database.yml` where you can fill in your own 
+user name if you absolutely must.  

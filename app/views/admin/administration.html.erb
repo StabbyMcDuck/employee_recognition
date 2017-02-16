@@ -9,8 +9,17 @@
 
 
 <% if current_user %>
-   <%=h current_user.email %>
+      <%=h current_user.email %>
              <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
+  <% if current_user.non_admin? %>
+      <h3>Welcome Non-Admin</h3>
+  <% elsif current_user.admin? %>
+      <h3>Welcom admin </h3>
+  <% else %>
+      <h3>Welcome</h3>
+  <% end %>
+<% else %>
+      <h3>Welcome</h3>
 <% end %>
 
     <h2>Site Administration</h2>

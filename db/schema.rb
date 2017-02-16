@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210220406) do
+ActiveRecord::Schema.define(version: 20170215204840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "awards", force: :cascade do |t|
-    t.string   "awardtype"
-    t.string   "employeename"
-    t.string   "employeeemail"
-    t.string   "grantedby"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "award_type",     null: false
+    t.string   "employee_name",  null: false
+    t.string   "employee_email", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "granter_id",     null: false
+    t.integer  "employee_id"
+    t.index ["employee_id"], name: "index_awards_on_employee_id", using: :btree
+    t.index ["granter_id"], name: "index_awards_on_granter_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,9 +36,9 @@ ActiveRecord::Schema.define(version: 20170210220406) do
     t.string   "perishable_token"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "role"
-    t.string   "userrole"
-    t.integer  "roletype"
+    t.integer  "role_type",         null: false
   end
 
+  add_foreign_key "awards", "users", column: "employee_id"
+  add_foreign_key "awards", "users", column: "granter_id"
 end

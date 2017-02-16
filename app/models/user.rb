@@ -14,8 +14,8 @@ class User < ApplicationRecord
             presence: true
   validates :password_salt,
             presence: true
-          end
+  end
 
-  enum roletype: [:guest, :nonadmin, :admin]
+  enum role_type: [:guest, :non_admin, :admin]
 
 end

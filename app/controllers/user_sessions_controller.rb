@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = 'User session successfully started'
       if current_user.admin?
         redirect_to '/administration'
-      elsif current_user.nonadmin?
+      else
         redirect_to '/awards'
       end
     else

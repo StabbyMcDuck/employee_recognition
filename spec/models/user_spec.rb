@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
       it { is_expected.to have_db_column(:password_salt).of_type(:string).with_options(null: false) }
       it { is_expected.to have_db_column(:perishable_token).of_type(:string).with_options(null: true) }
       it { is_expected.to have_db_column(:persistence_token).of_type(:string).with_options(null: true) }
+      it { is_expected.to have_db_column(:role_type).of_type(:integer).with_options(null: false) }
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end
   end

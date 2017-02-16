@@ -18,10 +18,10 @@
 
       <br>
 
-      <%= f.radio_button :roletype, 'admin' %>
-      <%= label :roletype, 'Administrator' %>
-      <%= f.radio_button :roletype, 'nonadmin' %>
-      <%= label :roletype, 'Non-Admin' %>
+      <%= f.radio_button :role_type, 'admin' %>
+      <%= label :role_type, 'Administrator' %>
+      <%= f.radio_button :role_type, 'non_admin' %>
+      <%= label :role_type, 'Non-Admin' %>
        <br>
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

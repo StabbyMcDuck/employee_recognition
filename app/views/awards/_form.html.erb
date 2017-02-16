@@ -12,22 +12,17 @@
 
  <div class="field">
     <%= f.label "Award type: " %>
-    <%= f.text_field :awardtype %>
+    <%= f.text_field :award_type %>
   </div>
 
    <div class="field">
     <%= f.label "Award granted to employee: " %>
-    <%= f.text_field :employeename %>
+    <%= f.text_field :employee_name %>
   </div>
 
    <div class="field">
     <%= f.label "Employee email: " %>
-    <%= f.text_field :employeeemail %>
-  </div>
-
-   <div class="field">
-    <%= f.label "Granted by: " %>
-    <%= f.select :grantedby, options_for_select(User.all.map{|s|[s.name, s.id]}) %>
+    <%= f.text_field :employee_email %>
   </div>
 
   <div class="actions">

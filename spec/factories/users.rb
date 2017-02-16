@@ -13,9 +13,15 @@ FactoryGirl.define do
     password_confirmation do
       password
     end
+
+    role_type do
+      generate :user_role_type
+    end
   end
 
   sequence(:user_email) do |n|
     "email#{n}@example.com"
   end
+
+  sequence(:user_role_type, User.role_types.keys.cycle)
 end

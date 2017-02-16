@@ -15,4 +15,8 @@ RSpec.describe Award, type: :model do
       it { is_expected.to have_db_index(:employee_id).unique(false) }
     end
   end
+
+  context 'factories' do
+
+  end
 end

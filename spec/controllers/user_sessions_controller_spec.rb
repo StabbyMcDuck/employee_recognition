@@ -17,8 +17,8 @@ RSpec.describe UserSessionsController do
   end
 
   describe 'POST create' do
-    let(:user) do
-      FactoryGirl.create :user, password: password
+    let!(:user) do
+      FactoryGirl.create :user, password: password, role_type: role_type
     end
 
     let(:password) do
@@ -32,9 +32,48 @@ RSpec.describe UserSessionsController do
         }
       end
 
+      context 'with admin' do
+        let(:role_type) {
+          'admin'
+        }
+
+        it "redirects to user's profile" do
+          post :create, params: params
+
+          expect(subject).to redirect_to("/administration")
+        end
+      end
+
+      context 'with guest' do
+        let(:role_type) {
+          'guest'
+        }
+
+        it "redirects to user's profile" do
+          post :create, params: params
+
+          expect(subject).to redirect_to(awards_url)
+        end
+      end
+
+      context 'with non-admin' do
+        let(:role_type) {
+          'non_admin'
+        }
+
+        it "redirects to user's profile" do
+          post :create, params: params
+
+          expect(subject).to redirect_to(awards_url)
+        end
+      end
     end
 
     context 'without valid params' do
+      let(:role_type) {
+        FactoryGirl.generate(:user_role_type)
+      }
+
       context 'with unregistered email' do
         let(:params) do
           {
@@ -76,7 +115,7 @@ RSpec.describe UserSessionsController do
     end
 
     # Let!s
-    let(:user) do
+    let!(:user) do
       FactoryGirl.create(:user, email: email, password: password)
     end
 
@@ -85,5 +124,10 @@ RSpec.describe UserSessionsController do
       post :create, params: { user_session: { email: email, password: password } }
     end
 
+    it 'redirects to login page' do
+      delete :destroy
+
+      expect(subject).to redirect_to new_user_session_url
+    end
   end
 end

@@ -17,7 +17,7 @@ RSpec.describe UserSessionsController do
   end
 
   describe 'POST create' do
-    let!(:user) do
+    let(:user) do
       FactoryGirl.create :user, password: password
     end
 
@@ -32,11 +32,6 @@ RSpec.describe UserSessionsController do
         }
       end
 
-      it "redirects to user's profile" do
-        post :create, params: params
-
-        expect(subject).to redirect_to(user_url(user))
-      end
     end
 
     context 'without valid params' do
@@ -81,7 +76,7 @@ RSpec.describe UserSessionsController do
     end
 
     # Let!s
-    let!(:user) do
+    let(:user) do
       FactoryGirl.create(:user, email: email, password: password)
     end
 
@@ -90,10 +85,5 @@ RSpec.describe UserSessionsController do
       post :create, params: { user_session: { email: email, password: password } }
     end
 
-    it 'redirects to login page' do
-      delete :destroy
-
-      expect(subject).to redirect_to new_user_session_url
-    end
   end
 end

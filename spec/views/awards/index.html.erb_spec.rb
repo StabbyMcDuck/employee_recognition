@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "awards/index", type: :view do
   before(:each) do
     assign(:awards, [
-      Award.create!(),
-      Award.create!()
+      Award.create(),
+      Award.create()
     ])
   end
 

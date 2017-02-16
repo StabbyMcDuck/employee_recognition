@@ -12,13 +12,15 @@
    <%=h current_user.email %>
              <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
 <% end %>
-<% if current_user.nonadmin? %>
+
+
+<!--<% if current_user.nonadmin? %>
   <h3>Welcome Non-Admin</h3>
 <% elsif current_user.admin? %>
   <h3>Welcom admin </h3>
 <% else %>
   <h3>Welcome fuc</h3>
-<% end %>
+<% end %> -->
 
 
     <h2>Site Administration</h2>

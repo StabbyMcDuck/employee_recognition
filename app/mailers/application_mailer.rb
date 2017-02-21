@@ -2,6 +2,5 @@
 
 # Send emails to people
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
-  layout 'mailer'
+	 default :from => "wperlich@gmail.com"
 end

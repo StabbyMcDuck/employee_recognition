@@ -38,6 +38,7 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  # this port has to match the port that you run locally or the mailer won't work 
   config.action_mailer.default_url_options = { :host => "localhost:3433" }
 
   config.action_mailer.delivery_method = :smtp

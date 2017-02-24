@@ -8,6 +8,7 @@ RSpec.describe Award, type: :model do
       it { is_expected.to have_db_column(:employee_name).of_type(:string).with_options(null: false) }
       it { is_expected.to have_db_column(:granter_id).of_type(:integer).with_options(null: false) }
       it { is_expected.to have_db_column(:employee_id).of_type(:integer).with_options(null: true) }
+      it { is_expected.to have_db_column(:grant_date).of_type(:date).with_options(null: true) }
     end
 
     context 'indices' do

@@ -17,7 +17,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$("textarea").autoResize({
-    extraSpace : 0,
-    animateDuration : 50
-});
+

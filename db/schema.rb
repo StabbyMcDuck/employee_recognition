@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221042950) do
+ActiveRecord::Schema.define(version: 20170224025939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170221042950) do
     t.datetime "updated_at",     null: false
     t.integer  "granter_id",     null: false
     t.integer  "employee_id"
+    t.date     "grant_date",     null: false
     t.index ["employee_id"], name: "index_awards_on_employee_id", using: :btree
     t.index ["granter_id"], name: "index_awards_on_granter_id", using: :btree
   end
@@ -37,11 +38,10 @@ ActiveRecord::Schema.define(version: 20170221042950) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "role_type",              null: false
-    t.string   "reset_digest"
-    t.datetime "reset_sent_at"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "auth_token"
+    t.binary   "signature",              null: false
   end
 
   add_foreign_key "awards", "users", column: "employee_id"

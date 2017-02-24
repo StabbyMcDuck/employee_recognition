@@ -10,18 +10,23 @@
     </div>
   <% end %>
 
- <div class="field">
-    <%= f.label "Award type: " %>
-    <%= f.text_field :award_type %>
+  <div class="field">
+    <%= f.label :award_type %>
+    <%= f.collection_select :award_type, Award.get_awards, :to_s, :to_s, include_blank: false %>
   </div>
 
-   <div class="field">
-    <%= f.label "Award granted to employee: " %>
+  <div class="field">
+    <%= f.label :employee_name %>
     <%= f.text_field :employee_name %>
   </div>
 
+  <div class="field">
+    <%= f.label :grant_date %>
+    <%= f.date_select :grant_date, :order => [:month, :day, :year] %>
+  </div>
+
    <div class="field">
-    <%= f.label "Employee email: " %>
+    <%= f.label :employee_email%>
     <%= f.text_field :employee_email %>
   </div>
 

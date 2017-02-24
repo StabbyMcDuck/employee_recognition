@@ -1,5 +1,7 @@
-<%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+
+<%= simple_form_for(user) do |f| %>
+    <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -42,7 +44,21 @@
   <%= label :role_type, 'Non-Admin' %>
    <br>
 
+  <%= f.hidden_field :signature, class: 'signature_pad_input' %>
+  <div class="signature_pad">
+    <div class="signature_pad_body">
+      <canvas style="border:2px dashed teal"></canvas>
+    </div>
+
+    <div class="signature_pad_footer">
+      <div class="text-primary">
+        Sign above
+      </div>
+      <button type="button" class="btn btn-primary signature_pad_clear">Clear</button>
+    </div>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
   </div>
 <% end %>

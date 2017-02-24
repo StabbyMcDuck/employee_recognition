@@ -68,6 +68,11 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
+  
+  # this is for production on Heroku
+  config.action_mailer.default_url_options = { :host => "rocky-ridge-55037.herokuapp.com" }
+  # need to this define protocol 
+  config.action_mailer.delivery_method = :smtp
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new

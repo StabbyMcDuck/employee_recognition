@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215204840) do
+ActiveRecord::Schema.define(version: 20170221042950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,20 @@ ActiveRecord::Schema.define(version: 20170215204840) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",              null: false
-    t.string   "email",             null: false
-    t.string   "crypted_password",  null: false
-    t.string   "password_salt",     null: false
+    t.string   "name",                   null: false
+    t.string   "email",                  null: false
+    t.string   "crypted_password",       null: false
+    t.string   "password_salt",          null: false
     t.string   "persistence_token"
     t.string   "perishable_token"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "role_type",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "role_type",              null: false
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string   "auth_token"
   end
 
   add_foreign_key "awards", "users", column: "employee_id"

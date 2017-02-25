@@ -25,10 +25,60 @@ class AwardsController < ApplicationController
   # POST /awards.json
   def create
     @award = Award.new(award_params)
+
+    @award.granter = current_user
+
     respond_to do |format|
       if @award.save
+
+        # if it saves, then email the recipient
+
+        award_signature = current_user.signature
+        award_signature = award_signature['data:image/png;base64,'.length .. -1]
+
+        File.open('TEST_FILE.png', 'wb') do |f|
+          f.write(Base64.decode64(award_signature))
+        end
+
+        # attach message with different award types
+
+        if @award.award_type == 'Employee of the Month'
+          award_message = 'For your contributions this month'
+          graphic = "#{Rails.root}/img/Employee_of_the_Month.jpg"
+        elsif @award.award_type == 'Employee of the Year'
+          award_message = 'For your contributions this year'
+          graphic = "#{Rails.root}/img/Employee_of_the_Year.jpg"
+        elsif @award.award_type == 'Kudos'
+          award_message = 'Big Kudos for everything that you do'
+          graphic = "#{Rails.root}/img/Kudos.jpg"
+        end
+
+        Prawn::Document.generate("test.pdf") do |pdf|
+          pdf.text "#{@award.award_type}", align: :center, size: 45
+          pdf.move_down 20
+          pdf.text "#{award_message}", align: :center, size: 36
+          pdf.move_down 20
+          pdf.image graphic, :position => :center, :scale => 0.40 # 40% scale
+          pdf.move_down 40
+          pdf.text "presented to #{@award.employee_name}", align: :center, size: 24
+          pdf.move_down 20
+          pdf.text "on #{@award.grant_date }", align: :center, size: 18
+          pdf.move_down 40
+          pdf.text "Granted by #{current_user.name}", align: :center, size: 18
+          signature_image = "#{Rails.root}/img/TEST_FILE.png"
+          pdf.image signature_image, :position => :center, :scale => 0.40
+        end
+
+        #mail = AwardMailer.award_email(@award)
+
+        #pdf_results = mail.deliver_now
+
+        #File.delete("#{Rails.root}/test.pdf")
+        #File.delete("#{Rails.root}/TEST_FILE.png")
+
         format.html { redirect_to @award, notice: 'Award was successfully created.' }
         format.json { render :show, status: :created, location: @award }
+
       else
         format.html { render :new }
         format.json { render json: @award.errors, status: :unprocessable_entity }
@@ -66,8 +116,14 @@ class AwardsController < ApplicationController
       @award = Award.find(params[:id])
     end
 
+    def check_admin
+      if current_user.role == 'admin'
+        redirect_to root_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
-   def award_params
-      params.require(:award).permit(:awardtype, :employeename, :employeeemail, :grantedby)
+    def award_params
+      params.require(:award).permit(:award_type, :employee_name, :employee_email, :"grant_date(2i)", :"grant_date(3i)", :"grant_date(1i)" )
     end
 end

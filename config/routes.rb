@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   resource :user_session, except: :show
   resources :users
   resources :awards
   resources :admin
+  resources :password_resets
+
 
   root controller: 'user_sessions', action: 'new'
 

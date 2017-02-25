@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   resource :user_session, except: :show
   resources :users
   resources :awards
+  resources :admin
 
   root controller: 'user_sessions', action: 'new'
 
 
-  get '/administration' => 'admin#administration'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
       if current_user.admin?
         redirect_to '/administration'
       else
-        redirect_to '/awards'
+        redirect_to '/landingpage'
       end
     else
       render action: :new

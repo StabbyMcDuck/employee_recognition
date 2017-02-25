@@ -9,7 +9,10 @@
       </ul>
     </div>
   <% end %>
-
+ <div class="jumbotron" align="center">
+        <p class="lead">
+          Create a new award!
+        </p>
   <div class="field">
     <%= f.label :award_type %>
     <%= f.collection_select :award_type, Award.get_awards, :to_s, :to_s, include_blank: false %>
@@ -31,6 +34,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
   </div>
 <% end %>

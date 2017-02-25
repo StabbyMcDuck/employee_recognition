@@ -17,6 +17,9 @@ FactoryGirl.define do
     role_type do
       generate :user_role_type
     end
+
+    signature "the_signature"
+
   end
 
   sequence(:user_email) do |n|

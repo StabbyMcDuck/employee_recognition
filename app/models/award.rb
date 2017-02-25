@@ -7,6 +7,12 @@ class Award < ApplicationRecord
   belongs_to :granter,
              class_name: "User"
 
+  VALID_AWARDS = ["Employee of the Month", "Employee of the Year", "Kudos"].freeze
+
+  def self.get_awards
+    return VALID_AWARDS
+  end
+
   # callbacks
 
   before_validation :denormalize_employee
@@ -18,6 +24,8 @@ class Award < ApplicationRecord
   validates :employee_name,
             presence: true
   validates :granter,
+            presence: true
+  validates :grant_date,
             presence: true
 
   # methods

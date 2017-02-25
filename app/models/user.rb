@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
+  end
 
 def send_password_reset
   generate_token(:password_reset_token)
@@ -27,7 +28,8 @@ end
             presence: true
   validates :password_salt,
             presence: true
-  end
+  validates :signature,
+            presence: true
 
   enum role_type: [:guest, :non_admin, :admin]
 

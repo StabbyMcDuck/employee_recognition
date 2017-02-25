@@ -11,6 +11,8 @@ FactoryGirl.define do
       employee_email{ generate :user_email }
       employee_name{ Faker::GameOfThrones.character }
     end
+
+    grant_date{ Date.today }
   end
 
   sequence :award_type do |n|

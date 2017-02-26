@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "awards/new", type: :view do
   before(:each) do
-  	view.stub(:current_user) { User.new # return a user }
     assign(:award, Award.new())
   end
 

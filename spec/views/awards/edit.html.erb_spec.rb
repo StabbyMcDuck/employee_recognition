@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "awards/edit", type: :view do
   before(:each) do
-  	view.stub(:current_user) { User.new # return a user }#
     @award = assign(:award, FactoryGirl.create(:user_award))
   end
 

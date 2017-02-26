@@ -1,3 +1,11 @@
+<% if current_user %>
+  <% if current_user.role_type == "admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
+
 <%= form_for(award) do |f| %>
   <% if award.errors.any? %>
     <div id="error_explanation">

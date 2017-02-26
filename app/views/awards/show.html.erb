@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user %>
+  <% if current_user.role_type == "admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
+
 <p>
-  <strong>Type: </strong>
-  <% @award.award_type %>
+  <strong>Awardee: </strong>
+  <%= @award.employee_name %>
 </p>
 
 <p>
@@ -10,8 +18,8 @@
   <%= @award.grant_date %>
 </p>
 <p>
-  <strong>Award: </strong>
-  <%=  %>
+  <strong>Award type: </strong>
+  <%= @award.award_type %>
 </p>
 <% if @award.granter_id == current_user.id %>
   <%= link_to 'Edit', edit_award_path(@award) %> |

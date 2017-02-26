@@ -21,5 +21,7 @@ Rails.application.routes.draw do
 
   get '/landingpage' => 'users#landingpage'
 
+  get '/accessdenied' => 'awards#accessdenied'
+
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
 end

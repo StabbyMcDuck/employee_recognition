@@ -1,4 +1,13 @@
-<h1>Editing Award</h1>
+<% if current_user %>
+  <% if current_user.role_type == "admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
+
+<h1 align="center">Editing Award</h1>
+
 
 <%= render 'form', award: @award %>
 

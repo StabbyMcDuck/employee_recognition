@@ -1,0 +1,21 @@
+<% if current_user %>
+  <% if current_user.role_type == "admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
+
+ <div class="jumbotron" align="center">
+        <p class="lead">
+   Welcome, 
+          <% if current_user %>
+          <%=h current_user.name %>
+      	  <% end %>!
+      	</p>
+      	
+<%= link_to 'Awards Center', '/awards', class: "btn btn-success" %>
+
+        <%= link_to 'Edit my information', edit_user_path(current_user), class: "btn btn-success" %>
+
+</div>

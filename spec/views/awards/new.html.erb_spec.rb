@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "awards/new", type: :view do
+ 
   before(:each) do
-    assign(:award, Award.new())
+    @award = assign(:award, FactoryGirl.create(:user_award))
+    current_user = FactoryGirl.create(:user)
+    view.define_singleton_method(:current_user) { current_user }
   end
 
-  it "renders new award form" do
+  it "renders attributes in <p>" do
     render
-
-    assert_select "form[action=?][method=?]", awards_path, "post" do
-    end
   end
 end
+

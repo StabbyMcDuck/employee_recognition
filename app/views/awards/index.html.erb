@@ -1,11 +1,17 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <% if current_user %>
-  <%=h current_user.email %>
-    <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
-<% end %>
+  <% if current_user.role_type == "admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
 
-<h1>Awards</h1>
+<div class="jumbotron" align="center">
+ <div align="center">
+      <h1>Awards</h1>
+    </div><br>
 
 <table class="table table-striped">
   <thead>
@@ -23,10 +29,10 @@
         <td><%= award.employee_name %></td>
         <td><%= award.award_type %></td>
         <td><%= award.grant_date.strftime("%B %d, %Y") %></td>
-        <td><%= link_to 'Show', award %></td>
+        <td><%= link_to 'Info', award %></td>
         <% if award.granter_id == current_user.id %>
           <td><%= link_to 'Edit', edit_award_path(award) %></td>
-          <td><%= link_to 'Destroy', award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
         </tr>
     <% end %>
@@ -34,5 +40,6 @@
 </table>
 
 <br>
-
+<div align="center">
 <%= link_to 'New Award', new_award_path, class: "btn btn-success" %>
+</div>

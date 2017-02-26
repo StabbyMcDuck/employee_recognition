@@ -40,7 +40,7 @@ RSpec.describe UserSessionsController do
         it "redirects to user's profile" do
           post :create, params: params
 
-          expect(subject).to redirect_to("/administration")
+          expect(subject).to redirect_to("/admin")
         end
       end
 

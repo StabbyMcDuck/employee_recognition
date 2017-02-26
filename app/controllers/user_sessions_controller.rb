@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       flash[:notice] = 'User session successfully started'
       if current_user.admin?
-        redirect_to '/administration'
+        redirect_to '/admin'
       else
         redirect_to '/landingpage'
       end

@@ -1,0 +1,44 @@
+<!-- Modal -->
+<div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="memberModalLabel">Edit User</h4>
+      </div>
+
+
+      <div class="modal-body">
+        <%= form_for(@getUserAdmin) do |f| %>
+
+
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+
+
+
+          <br>
+
+          <%= f.radio_button :role_type, 'admin' %>
+          <%= label :role_type, 'Administrator' %>
+          <%= f.radio_button :role_type, 'non_admin' %>
+          <%= label :role_type, 'Non-Admin' %>
+           <br>
+
+
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>      </div>
+    </div>
+  </div>
+</div>

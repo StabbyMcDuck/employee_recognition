@@ -52,7 +52,7 @@ RSpec.describe UserSessionsController do
         it "redirects to user's profile" do
           post :create, params: params
 
-          expect(subject).to redirect_to(awards_url)
+          expect(subject).to redirect_to('/landingpage')
         end
       end
 

@@ -9,8 +9,7 @@ RSpec.describe "awards/edit", type: :view do
     view.define_singleton_method(:current_user) { current_user }
   end
 
-  it "renders the edit award form" do
+  it "renders attributes in <p>" do
     render
-    end
   end
 end

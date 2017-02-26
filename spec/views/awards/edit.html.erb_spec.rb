@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "awards/edit", type: :view do
+
+  current_user = FactoryGirl.create(:user)
+
   before(:each) do
     @award = assign(:award, FactoryGirl.create(:user_award))
   end
-
-      current_user = FactoryGirl.create(:user)
-    view.define_singleton_method(:current_user) { current_user }
 
   it "renders the edit award form" do
     render

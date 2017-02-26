@@ -1,3 +1,11 @@
+<% if current_user %>
+  <% if current_user.role_type == "non_admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
+
 <%= stylesheet_link_tag "administration" %>
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <a class="navbar-brand">Employee Recognition Administration</a>

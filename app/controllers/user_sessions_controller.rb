@@ -2,6 +2,7 @@
 
 # Allow users to log in & out
 class UserSessionsController < ApplicationController
+
   def new
     @user_session = UserSession.new
 

@@ -13,6 +13,19 @@ class Award < ApplicationRecord
     return VALID_AWARDS
   end
 
+  #for generating csv file
+  def self.to_csv
+    attributes = %w{id award_type employee_name employee_email grant_date}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |award|
+        csv << award.attributes.values_at(*attributes)
+      end
+    end
+  end
+
+
   # callbacks
 
   before_validation :denormalize_employee

@@ -36,6 +36,15 @@
 
 }
 
+.container-2{
+	display: flex;
+		justify-content: flex-end;
+    align-items: center;
+    height: 55px;
+    padding-bottom: 50px
+
+}
+
 .container-1 div {
 	//border: 1px #ccc solid;
 	padding: 15px;
@@ -51,13 +60,4 @@
 
 .box-3 {
 	flex:1;
-}
-
-.editbutton{
-
-}
-
-
-
-table td {
 }

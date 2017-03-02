@@ -70,7 +70,20 @@
         </div>
         <% end %>
     </div>
-    <div class="col-md-4">What should we put here... hmmmmmmmmm?</div>
+    <div class="col-md-4 ">
+      <div class="container-2">
+            <H2 class="csv">Generate CSV Reports</h2>
+      </div>
+    <%= form_tag("/admin.csv", method: 'GET') do %>
+    <%= select_tag "options", grouped_options_for_select(grouped_options = {
+      'Award Type' => [['Kudos', 'kudos'], ['Employee of the Month', 'eom'],['Employee of the Year', 'eoy']],
+      'By Quarter' => [['First Quarter', 1], ['Second Quarter', 2], ['Third Quarter', 3], ['Fourth Quarter', 4]]}) %>
+
+      <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+          Generate Report
+      <% end %>
+      <% end %>
+      </div>
 </div>
 
 </div>

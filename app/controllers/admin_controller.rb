@@ -1,15 +1,61 @@
 class AdminController < ApplicationController
   #before_filter :admin_only
 
-  def administration
-    @user_select = User.where(:role_type => "admin")
-    @user_select1 = User.where(:role_type => "non_admin")
-
-  end
 
   def index
+
     @user_select = User.where(:role_type => "admin")
     @user_select1 = User.where(:role_type => "non_admin")
+
+    if params[:options] == 'kudos'
+      @award_select = Award.where(:award_type => "Kudos")
+      respond_to do |format|
+        format.html
+        format.csv { send_data @award_select.to_csv }
+      end
+    elsif params[:options] == 'eom'
+        @award_select = Award.where(:award_type => "Employee of the Month")
+        respond_to do |format|
+          format.html
+          format.csv { send_data @award_select.to_csv }
+        end
+    elsif params[:options] == 'eoy'
+          @award_select = Award.where(:award_type => "Employee of the Year")
+          respond_to do |format|
+            format.html
+            format.csv { send_data @award_select.to_csv }
+          end
+    elsif params[:options] == '1'
+
+      @awardss = Award.where('grant_date > ? AND grant_date < ?', '2017-01-01', '2017-04-01')
+          respond_to do |format|
+            format.html
+            format.csv { send_data @awardss.to_csv }
+          end
+    elsif params[:options] == '2'
+      @awardss = Award.where('grant_date >= ? AND grant_date < ?', '2017-04-01', '2017-06-30')
+          respond_to do |format|
+            format.html
+            format.csv { send_data @awardss.to_csv }
+          end
+    elsif params[:options] == '3'
+      @awardss = Award.where('grant_date >= ? AND grant_date < ?', '2017-07-01', '2017-09-30')
+          respond_to do |format|
+            format.html
+            format.csv { send_data @awardss.to_csv }
+          end
+    elsif params[:options] == '4'
+      @awardss = Award.where('grant_date >= ? AND grant_date <= ?', '2017-09-01', '2017-12-31')
+          respond_to do |format|
+            format.html
+            format.csv { send_data @awardss.to_csv }
+          end
+    end
+  end
+
+
+
+  def create
   end
 
   def destroy
@@ -20,19 +66,15 @@ class AdminController < ApplicationController
     end
   end
 
-  def
-
-
-
-  def list
-    @users = User.all
-  end
 
   def edit
     @getUserAdmin = User.find(params[:id])
-
-
   end
+
+  def show
+    @users = User.all
+  end
+
 
  def update
    @getUser = User.find(params[:hah])
@@ -44,8 +86,8 @@ class AdminController < ApplicationController
    end
 end
 
-  private
 
+  private
 
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation, :role_type)

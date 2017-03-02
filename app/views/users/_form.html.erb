@@ -13,9 +13,6 @@
     </div>
   <% end %>
  <div class="jumbotron" align="center">
-        <p class="lead">
-          Create a new user!
-        </p>
   <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
@@ -51,14 +48,15 @@
     </div>
 
     <div class="signature_pad_footer">
-      <div class="text-primary">
+      <div class="lead">
         Sign above
       </div>
-      <button type="button" class="btn btn-primary signature_pad_clear">Clear</button>
+      <button type="button" class="btn btn-primary signature_pad_clear">Clear signature</button>
     </div>
   </div>
-
+<br>
   <div class="actions">
     <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
   </div>
+
 <% end %>

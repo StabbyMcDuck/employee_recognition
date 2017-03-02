@@ -1,11 +1,13 @@
-<%= stylesheet_link_tag "administration" %>
-<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-    <a class="navbar-brand">Employee Recognition Administration</a>
-    <p class="navbar-text navbar-right signout">
-        <%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
+<% if current_user %>
+  <% if current_user.role_type == "non_admin" %>
+   <script type="text/javascript">
+    window.location.href="/accessdenied"  
+  </script>
+<% end %> 
+<% end %> 
 
-</p>
-</nav>
+<%= stylesheet_link_tag "administration" %>
+
 <div class="container">
 
 <h2>Welcome

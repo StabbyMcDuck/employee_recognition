@@ -2,6 +2,7 @@
 
 # Allow users to log in & out
 class UserSessionsController < ApplicationController
+
   def new
     @user_session = UserSession.new
 
@@ -14,7 +15,7 @@ class UserSessionsController < ApplicationController
       if current_user.admin?
         redirect_to '/admin'
       else
-        redirect_to '/awards'
+        redirect_to '/landingpage'
       end
     else
       render action: :new

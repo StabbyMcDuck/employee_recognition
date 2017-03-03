@@ -1,37 +1,84 @@
 
-<%= form_for user_session, url: user_session_path do |f| %>
-    <% if user_session.errors.any? %>
+
+ <title>Freelancer - Start Bootstrap Theme</title>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Employee Recognition Center</span>
+                        <span class="skills">Will Perlichek - Regina Imhoff - Eric Ferrer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%= form_for user_session, url: user_session_path do |f| %>
+        <% if user_session.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(user_session.errors.count, "error") %> prohibited:</h2>
           <p>
             Email/password combination is invalid.
           </p>
-        </div>boot
+        </div><br><br><br><br>
     <% end %>
-
-    <div class="panel panel-success">
-    <% if flash[:alert] %>
-      <div id="alert">
-         <%= flash[:alert] %> 
-      </div>
-    </div>
-
-<% end %>
-    <div class="jumbotron" align="center"><br><br><br>
-     
     <%= f.label :email %>
     <%= f.text_field :email %><br />
     <br />
     <%= f.label :password %>
-    <%= f.password_field :password %><br />
-    <br /><br>
-    <%= f.submit "LOGIN", class: 'btn btn-success' %>
+    <%= f.password_field :password %><br /><br>
+    <%= f.submit "LOGIN", class: 'btn btn-info' %>
     
     <%= link_to "CREATE A NEW ACCOUNT", createuser_path, class: 'btn btn-primary' %>
-    <%= link_to "FORGOT YOUR PASSWORD?", new_password_reset_path, class: 'btn btn-warning' %>
-</div>
+    <%= link_to "FORGOT YOUR PASSWORD?", new_password_reset_path, class: 'btn btn-warning' %><br><br>
+    <br><br>
+    <br><br>
 
 
 <% end %>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                    <!-- About Section -->
+            <div class="row">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                          <h2>About</h2><br>
+                    <p>ERC intends to be the hub for anything employee recognition related. ERC is not just useful in managing employees and their awards - it also allows particular users to create a new award, generate its contents in a PDF file, and email the PDF to the recipient. ERC makes tracking awards easy.</p>
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+        <br>
+    </section>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Employee Recognition Center 2017
+                </div>
+            </div>
+        </div>
+    </footer>
 
 

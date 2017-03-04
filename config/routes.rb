@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get "/awards/new", to: "awards#new", as: "createaward"
 
-  get '/landingpage' => 'users#landingpage'
+  get '/landingpage' => 'users#landingpage', as: "landingpage"
 
   get '/accessdenied' => 'awards#accessdenied'
 

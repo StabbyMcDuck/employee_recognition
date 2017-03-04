@@ -3,10 +3,8 @@
  */
 
 var ready = function () {
-    debugger;
     var canvas = document.querySelector("canvas");
     if (canvas) {
-        debugger;
         canvas.height = canvas.offsetHeight;
         canvas.width = canvas.offsetWidth;
         var signature_pad = new SignaturePad(canvas);
@@ -21,7 +19,20 @@ var ready = function () {
                 $('.signature_pad_input').val(signature_pad.toDataURL());
             }
         });
+
+        $("#user_role_type_non_admin").click(function() {
+            $("#signature_area").show();
+            canvas.height = 150;
+            canvas.width = 300;
+            signature_pad.clear();
+        });
+
+        $("#user_role_type_admin").click(function() {
+            $("#signature_area").hide();
+        });
     }
+
+
 };
 
 $(document).on('turbolinks:load', ready);

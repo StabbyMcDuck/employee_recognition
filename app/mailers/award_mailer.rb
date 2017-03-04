@@ -4,6 +4,7 @@ class AwardMailer < ApplicationMailer
 
     attachments['award.pdf'] = File.read("#{Rails.root}/test.pdf")
 
-    mail(to: @award.employee_email, subject: 'Congrats! You got an award!')
+    mail :to => @award.employee_email, :subject => "Congrats!  You got an award!"
+
   end
 end

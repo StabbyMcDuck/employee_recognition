@@ -72,9 +72,9 @@ class AwardsController < ApplicationController
           pdf.image signature_image, :position => :center, :scale => 0.40
         end
 
-        #mail = AwardMailer.award_email(@award)
+        mail = AwardMailer.award_email(@award)
 
-        #pdf_results = mail.deliver_now
+        pdf_results = mail.deliver_now
 
         #File.delete("#{Rails.root}/test.pdf")
         #File.delete("#{Rails.root}/TEST_FILE.png")

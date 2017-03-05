@@ -20,7 +20,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'pg', '~> 0.19.0'
 # Prawn PDF generation
 gem 'prawn', '~> 2.1'
-
+# Gem for Charts
+gem "chartkick"
+# Gem for date on Charts
+gem 'groupdate'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

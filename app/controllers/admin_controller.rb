@@ -63,11 +63,6 @@ class AdminController < ApplicationController
 
 
 
-
-
-
-
-
   def create
   end
 
@@ -79,6 +74,9 @@ class AdminController < ApplicationController
     end
   end
 
+  def delete
+    @getUserAdmin = User.find(params[:id])
+  end
 
   def edit
     @getUserAdmin = User.find(params[:id])

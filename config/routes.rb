@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :awards
   resources :admin
   resources :password_resets
-
+  resources :admin do
+    get :delete, on: :member
+  end
 
   root controller: 'user_sessions', action: 'new'
 

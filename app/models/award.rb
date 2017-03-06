@@ -1,6 +1,6 @@
 class Award < ApplicationRecord
   # associations
-
+  
   belongs_to :employee,
              class_name: "User"
 

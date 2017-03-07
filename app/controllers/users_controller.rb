@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   #before_filter :admin_only, :except => :show
   before_action :set_user, only: [:show, :edit, :update, :destroy]
- 
-  
+
+
   def landingpage
   end
 

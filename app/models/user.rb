@@ -2,6 +2,9 @@
 
 # Users can send employee recognition awards
 class User < ApplicationRecord
+  has_many :awards, dependent: :destroy
+
+
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end

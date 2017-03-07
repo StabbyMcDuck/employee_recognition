@@ -3,9 +3,8 @@ class UsersController < ApplicationController
   #before_filter :admin_only, :except => :show
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :non_admin_only, only: :landingpage
-  
-  def landingpage
 
+  def landingpage
   end
 
 
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to after_create_path(@user.role_type), alert: "User was successfully created." }
+        format.html { redirect_to after_create_path(current_user.role_type), alert: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -82,33 +81,34 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :name, :password, :password_confirmation, :signature, :role_type)
+  def admin_only
+    unless current_user.admin?
+      redirect_to :back, :alert => "Access denied."
     end
+  end
 
-    def admin_only
-      unless current_user.admin?
-        redirect_to :back, :alert => "Access denied."
-      end
+  def after_create_path(role_type)
+    if role_type == 'admin'
+      admin_index_path
+    else
+      landingpage_path
     end
+  end
 
-    def after_create_path(role_type)
-      if role_type == 'admin'
-        admin_index_path
-      else
-        landingpage_path
-      end
+  def non_admin_only
+    unless current_user.role_type == 'non_admin'
+      redirect_to admin_index_path
     end
+  end
 
-    def non_admin_only
-      unless current_user.role_type == 'non_admin'
-        redirect_to admin_index_path
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :signature, :role_type)
+  end
+end

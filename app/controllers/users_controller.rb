@@ -2,9 +2,10 @@ class UsersController < ApplicationController
 
   #before_filter :admin_only, :except => :show
   before_action :set_user, only: [:show, :edit, :update, :destroy]
- 
+  before_action :non_admin_only, only: :landingpage
   
   def landingpage
+
   end
 
 
@@ -96,4 +97,21 @@ class UsersController < ApplicationController
         redirect_to :back, :alert => "Access denied."
       end
     end
+<<<<<<< Updated upstream
+=======
+
+    def after_create_path(role_type)
+      if role_type == 'admin'
+        admin_index_path
+      else
+        landingpage_path
+      end
+    end
+
+    def non_admin_only
+      unless current_user.role_type == 'non_admin'
+        redirect_to admin_index_path
+      end
+    end
+>>>>>>> Stashed changes
 end

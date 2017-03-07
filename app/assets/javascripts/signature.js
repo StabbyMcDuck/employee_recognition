@@ -19,6 +19,7 @@ $(document).ready(function() {
     if (canvas){
         canvas.height = canvas.offsetHeight;
         canvas.width = canvas.offsetWidth;
+<<<<<<< Updated upstream
         window.onresize = resizeCanvas(canvas);
         resizeCanvas(canvas);
         signature_pad = new SignaturePad(canvas);
@@ -30,6 +31,14 @@ $(document).ready(function() {
             } else {
                 $('.signature_pad_input').val(signature_pad.toDataURL());
             }
+=======
+        var signature_pad = new SignaturePad(canvas);
+        $('.signature_pad_clear').click(function () {
+            signature_pad.clear()
+        });
+        $('#user_role_type_non_admin').click(function (event) {
+            $('.signature_pad_input').val(signature_pad.toDataURL());
+>>>>>>> Stashed changes
         });
     }
 });

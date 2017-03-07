@@ -11,7 +11,7 @@ var ready = function () {
         $('.signature_pad_clear').click(function () {
             signature_pad.clear()
         });
-        $('#user_role_type_non_admin').click(function (event) {
+        $('.signature_pad_save').click(function (event) {
             $('.signature_pad_input').val(signature_pad.toDataURL());
         });
 

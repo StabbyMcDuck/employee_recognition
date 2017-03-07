@@ -11,7 +11,7 @@ var ready = function () {
         $('.signature_pad_clear').click(function () {
             signature_pad.clear()
         });
-        $('.signature_pad_save').click(function (event) {
+        $('#user_role_type_non_admin').click(function (event) {
             if (signature_pad.isEmpty()) {
                 alert('No signature entered');
                 event.preventDefault();

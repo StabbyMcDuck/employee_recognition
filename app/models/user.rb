@@ -29,7 +29,9 @@ end
   validates :password_salt,
             presence: true
   validates :signature,
-            presence: true
+            presence: {
+                if: "role_type == 'non_admin'"
+            }
 
   enum role_type: [:guest, :non_admin, :admin]
 

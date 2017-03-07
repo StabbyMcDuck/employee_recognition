@@ -2,9 +2,10 @@ class UsersController < ApplicationController
 
   #before_filter :admin_only, :except => :show
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-
+  before_action :non_admin_only, only: :landingpage
+  
   def landingpage
+
   end
 
 
@@ -104,5 +105,10 @@ class UsersController < ApplicationController
         landingpage_path
       end
     end
-end
+
+    def non_admin_only
+      unless current_user.role_type == 'non_admin'
+        redirect_to admin_index_path
+      end
+    end
 

@@ -12,12 +12,7 @@ var ready = function () {
             signature_pad.clear()
         });
         $('#user_role_type_non_admin').click(function (event) {
-            if (signature_pad.isEmpty()) {
-                alert('No signature entered');
-                event.preventDefault();
-            } else {
-                $('.signature_pad_input').val(signature_pad.toDataURL());
-            }
+            $('.signature_pad_input').val(signature_pad.toDataURL());
         });
 
         $("#user_role_type_non_admin").click(function() {

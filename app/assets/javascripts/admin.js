@@ -21,5 +21,6 @@
 $(document).on('turbolinks:load', function() {
 
     $('#memberModal').modal('show');
+    $('#deleteUser1').modal('show');
 
 });

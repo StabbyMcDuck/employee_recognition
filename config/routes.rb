@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :awards
   resources :admin
   resources :password_resets
-
+  resources :admin do
+    get :delete, on: :member
+  end
 
   root controller: 'user_sessions', action: 'new'
 
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   get "/awards/new", to: "awards#new", as: "createaward"
 
-  get '/landingpage' => 'users#landingpage'
+  get '/landingpage' => 'users#landingpage', as: "landingpage"
 
   get '/accessdenied' => 'awards#accessdenied'
 

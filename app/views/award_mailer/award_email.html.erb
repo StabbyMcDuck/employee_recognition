@@ -7,7 +7,7 @@
 <body>
   <h1>Congratulations, <%= @award.employee_name %>!</h1>
   <p>
-    <%= @award.granter %> has given you an award for <%= @award.award_type %>
+    <%= @award.granter.name %> has given you an award for <%= @award.award_type %>
   </p>
   <p>
     Open the attached PDF to view your award!

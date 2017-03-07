@@ -1,10 +1,10 @@
 <% if current_user %>
   <% if current_user.role_type == "non_admin" %>
    <script type="text/javascript">
-    window.location.href="/accessdenied"  
+    window.location.href="/accessdenied"
   </script>
-<% end %> 
-<% end %> 
+<% end %>
+<% end %>
 
 <%= stylesheet_link_tag "administration" %>
 
@@ -32,11 +32,11 @@
             </div>
             <div class="box-2">
 
-                <%= link_to '<i class="glyphicon glyphicon-pencil"></i> '.html_safe,  edit_admin_path(user), class: 'btn btn-default'  %>
+                <%= link_to '<i class="glyphicon glyphicon-pencil"></i> '.html_safe,  edit_admin_path(user)  %>
             </div>
             <div class="box-3">
 
-                <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe,  delete_admin_path(user)  %>
             </div>
 
         </div>
@@ -60,11 +60,11 @@
             </div>
             <div class="box-2">
 
-                <%= link_to '<i class="glyphicon glyphicon-pencil"></i> '.html_safe,  edit_admin_path(user), class: 'btn btn-default', method: :get  %>
+                <%= link_to '<i class="glyphicon glyphicon-pencil"></i> '.html_safe,  edit_admin_path(user)  %>
             </div>
             <div class="box-3">
+              <%= link_to '<i class="glyphicon glyphicon-trash"></i> '.html_safe,  delete_admin_path(user)  %>
 
-                <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
 
         </div>
@@ -83,7 +83,30 @@
           Generate Report
       <% end %>
       <% end %>
+      <!--Codde for charts -->
+      <div class="container-3">
+            <H2 class="csv">Generate Charts</h2>
+      </div>
+    <%= form_tag admin_index_path, method: 'get' do %>
+    <%= select_tag "charts", grouped_options_for_select(grouped_options = {
+      'BreakDown' => [['Award Types', 'award'], ['Grantees', 'grantees'],['Timeline', 'time']]}) %>
+
+      <%= button_tag(type: "submit", class: "btn btn-primary", id: "generatecharts") do %>
+          Generate Report
+      <% end %>
+      <% end %>
       </div>
 </div>
 
 </div>
+
+
+<h1 id="result"><h1>
+
+  <% if defined?(@awardtype) %>
+  <%= pie_chart @awardtype.group(:award_type).count %>
+  <% elsif defined?(@awardgrantee) %>
+  <%= pie_chart @awardgrantee.group(:employee_name).count %>
+  <% elsif defined?(@awardtime) %>
+<%= line_chart Award.group_by_month(:grant_date).count, label: "# of Awards Awarded During Month", xtitle: "Month Rewarded", ytitle: " Awards Rewarded", discrete: true   %>
+  <% end %>

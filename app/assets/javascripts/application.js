@@ -17,6 +17,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require Chart.bundle
+//= require chartkick
 
 // Freelancer Theme JavaScript
 
@@ -39,7 +41,7 @@
     });
 
     // Closes the Responsive Menu on Menu Item Click
-    $('.navbar-collapse ul li a').click(function(){ 
+    $('.navbar-collapse ul li a').click(function(){
             $('.navbar-toggle:visible').click();
     });
 
@@ -62,4 +64,3 @@
     });
 
 })(jQuery); // End of use strict
-

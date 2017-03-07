@@ -50,6 +50,14 @@ class AdminController < ApplicationController
             format.html
             format.csv { send_data @awardss.to_csv }
           end
+    elsif params[:charts] == 'award'
+      @awardtype = Award.all
+    elsif params[:charts] == 'grantees'
+      @awardgrantee = Award.all
+      @users = User.all
+    elsif params[:charts] == 'time'
+      @awardtime = Award.all
+
     end
   end
 
@@ -66,6 +74,9 @@ class AdminController < ApplicationController
     end
   end
 
+  def delete
+    @getUserAdmin = User.find(params[:id])
+  end
 
   def edit
     @getUserAdmin = User.find(params[:id])

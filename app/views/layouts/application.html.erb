@@ -5,12 +5,13 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
   </head>
   <body>
   	<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Employee Recognition Center</a>
+      <a class="navbar-brand" href="<%= root_path %>">Employee Recognition Center</a>
     </div>
        <ul class="nav navbar-nav navbar-right">
    <% if current_user_session %>

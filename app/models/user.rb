@@ -2,6 +2,9 @@
 
 # Users can send employee recognition awards
 class User < ApplicationRecord
+  has_many :awards, dependent: :destroy
+
+
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end
@@ -29,7 +32,9 @@ end
   validates :password_salt,
             presence: true
   validates :signature,
-            presence: true
+            presence: {
+                if: "role_type == 'non_admin'"
+            }
 
   enum role_type: [:guest, :non_admin, :admin]
 

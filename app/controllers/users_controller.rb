@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to root_url, alert: "User was successfully created." }
+        format.html { redirect_to after_create_path(@user.role_type), alert: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -97,8 +97,6 @@ class UsersController < ApplicationController
         redirect_to :back, :alert => "Access denied."
       end
     end
-<<<<<<< Updated upstream
-=======
 
     def after_create_path(role_type)
       if role_type == 'admin'
@@ -113,5 +111,4 @@ class UsersController < ApplicationController
         redirect_to admin_index_path
       end
     end
->>>>>>> Stashed changes
-end
+

@@ -98,7 +98,7 @@ class UsersController < ApplicationController
 
   def non_admin_only
     unless current_user.role_type == 'non_admin'
-      redirect_to admin_index_path
+      redirect_to landingpage_path
     end
   end
 

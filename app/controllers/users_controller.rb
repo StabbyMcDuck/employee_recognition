@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to landingpage_path, alert: "User was successfully created." }
+        format.html { redirect_to after_create_path(@user.role_type), alert: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -96,4 +96,13 @@ class UsersController < ApplicationController
         redirect_to :back, :alert => "Access denied."
       end
     end
+
+    def after_create_path(role_type)
+      if role_type == 'admin'
+        admin_index_path
+      else
+        landingpage_path
+      end
+    end
 end
+

@@ -15,10 +15,8 @@
   <%= image_tag @user.signature %>
 </p>
 
-  <% if current_user %>
    <% if current_user.role_type == "admin" %>
             <%= link_to 'Back', '/admin' %>
-   <% end %>
    <% end %>
 
    <% if current_user.role_type == "non-admin" %>

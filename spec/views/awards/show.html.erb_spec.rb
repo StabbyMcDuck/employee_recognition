@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "awards/show", type: :view do
 	
   before(:each) do
-    @award = assign(:award, FactoryGirl.create(:user_award))
+    @award = assign(:award, FactoryGirl.create(:award))
     current_user = FactoryGirl.create(:user)
     view.define_singleton_method(:current_user) { current_user }
   end

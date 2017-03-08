@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "awards/show", type: :view do
+RSpec.describe "users/show", type: :view do
 	
   before(:each) do
     @user = assign(:user, FactoryGirl.create(:user))

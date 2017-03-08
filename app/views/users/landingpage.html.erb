@@ -1,5 +1,6 @@
 <div class="jumbotron" align="center">
         <p class="lead">
+        	  <br><br><br><br><br><br><br>
    Welcome, 
           <% if current_user %>
           <%=h current_user.name %>
@@ -8,6 +9,6 @@
       	
 <%= link_to 'Awards Center', '/awards', class: "btn btn-success" %>
 
-        <%= link_to 'Edit my information', edit_user_path(current_user), class: "btn btn-success" %>
+        <%= link_to 'Edit My Information', edit_user_path(current_user), class: "btn btn-success" %>
 
 </div>

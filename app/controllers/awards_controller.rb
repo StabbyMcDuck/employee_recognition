@@ -80,7 +80,7 @@ class AwardsController < ApplicationController
         #File.delete("#{Rails.root}/test.pdf")
         #File.delete("#{Rails.root}/TEST_FILE.png")
 
-        format.html { redirect_to @award, notice: 'Award was successfully created.' }
+        format.html { redirect_to @award, notice: 'Award was successfully created by'}
         format.json { render :show, status: :created, location: @award }
 
       else

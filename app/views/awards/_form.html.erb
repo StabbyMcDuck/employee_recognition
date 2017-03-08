@@ -18,6 +18,7 @@
     </div>
   <% end %>
  <div class="jumbotron" align="center">
+  <br><br><br><br><br><br><br>
         <p class="lead">
           Create a new award!
         </p>
@@ -39,9 +40,14 @@
    <div class="field">
     <%= f.label :employee_email%>
     <%= f.text_field :employee_email %>
-  </div>
+  </div><br>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><em>Your name and the current timestamp will be automatically associated with the award upon creation</em></div>
+</div>
 
   <div class="actions">
     <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
   </div>
+
 <% end %>

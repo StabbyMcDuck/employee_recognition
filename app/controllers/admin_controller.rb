@@ -69,7 +69,7 @@ class AdminController < ApplicationController
   def destroy
     @user_select.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to '/admin', notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -91,9 +91,9 @@ class AdminController < ApplicationController
    @getUser = User.find(params[:hah])
 
    if @getUser.update_attributes(user_params)
-      redirect_to :action => 'administration'
+      redirect_to '/admin'
    else
-      render 'edit'
+      redirect_to '/admin'
    end
 end
 

@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-
+<div class="jumbotron" align="center">
+  <br><br><br><br><br><br><br>
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
@@ -15,5 +15,13 @@
   <%= image_tag @user.signature %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <% if current_user %>
+   <% if current_user.role_type == "admin" %>
+            <%= link_to 'Back', '/admin' %>
+   <% end %>
+   <% end %>
+
+   <% if current_user.role_type == "non-admin" %>
+            <%= link_to 'Back', '/landingpage' %>
+   <% end %>
+

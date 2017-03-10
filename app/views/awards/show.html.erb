@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <% if current_user %>
   <% if current_user.role_type == "admin" %>
@@ -7,21 +7,30 @@
   </script>
 <% end %> 
 <% end %> 
+<div class="award_show_page">
+  <p>
+    <strong>Awardee: </strong>
+    <%= @award.employee_name %>
+  </p>
 
-<p>
-  <strong>Awardee: </strong>
-  <%= @award.employee_name %>
-</p>
+  <p>
+    <strong>Date granted: </strong>
+    <%= @award.grant_date %>
+  </p>
 
-<p>
-  <strong>Date granted: </strong>
-  <%= @award.grant_date %>
-</p>
-<p>
-  <strong>Award type: </strong>
-  <%= @award.award_type %>
-</p>
-<% if @award.granter_id == current_user.id %>
-  <%= link_to 'Edit', edit_award_path(@award) %> |
-<% end %>
-<%= link_to 'Back', awards_path %>
+  <p>
+    <strong>Award type: </strong>
+    <%= @award.award_type %>
+  </p>
+
+  <p>
+    <strong>Granter: </strong>
+    <%= @award.granter.name %>
+  </p>
+
+
+  <% if @award.granter_id == current_user.id %>
+    <%= link_to 'Edit', edit_award_path(@award) %> |
+  <% end %>
+  <%= link_to 'Back', awards_path %>
+</div>

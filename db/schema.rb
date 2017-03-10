@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305234804) do
+ActiveRecord::Schema.define(version: 20170306204931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170305234804) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "auth_token"
-    t.binary   "signature",              null: false
+    t.binary   "signature"
   end
 
   add_foreign_key "awards", "users"

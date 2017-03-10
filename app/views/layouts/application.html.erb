@@ -14,9 +14,9 @@
       <a class="navbar-brand" href="<%= root_path %>">Employee Recognition Center</a>
     </div>
        <ul class="nav navbar-nav navbar-right">
-   <% if current_user_session %>
-        <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
-        <% end %> 
+          <% if current_user_session %>
+             <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
+          <% end %>
     </ul>
   </div>
 </nav>

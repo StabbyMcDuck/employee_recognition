@@ -39,9 +39,11 @@ class AwardsController < ApplicationController
         award_signature = current_user.signature
         award_signature = award_signature['data:image/png;base64,'.length .. -1]
 
-        File.open('TEST_FILE.png', 'wb') do |f|
-          f.write(Base64.decode64(award_signature))
-        end
+        signature_image = Tempfile.new(['signature', '.png'])
+
+        signature_image.binmode
+        signature_image.write(Base64.decode64(award_signature))
+        signature_image.flush
 
         # attach message with different award types
 
@@ -68,8 +70,7 @@ class AwardsController < ApplicationController
           pdf.text "on #{@award.grant_date }", align: :center, size: 18
           pdf.move_down 40
           pdf.text "Granted by #{current_user.name}", align: :center, size: 18
-          signature_image = "#{Rails.root}/img/TEST_FILE.png"
-          pdf.image signature_image, :position => :center, :scale => 0.40
+          pdf.image signature_image.path, :position => :center, :scale => 0.40
         end
 
         mail = AwardMailer.award_email(@award)
@@ -79,7 +80,7 @@ class AwardsController < ApplicationController
         #File.delete("#{Rails.root}/test.pdf")
         #File.delete("#{Rails.root}/TEST_FILE.png")
 
-        format.html { redirect_to @award, notice: 'Award was successfully created.' }
+        format.html { redirect_to @award, notice: 'Award was successfully created by'}
         format.json { render :show, status: :created, location: @award }
 
       else

@@ -2,8 +2,13 @@
 
 # Users can send employee recognition awards
 class User < ApplicationRecord
-  has_many :awards, dependent: :destroy
+  has_many :granted_awards,
+           class_name: "Award",
+           foreign_key: :granter_id
 
+  has_many :received_awards,
+           class_name: "Award",
+           foreign_key: :employee_id
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512

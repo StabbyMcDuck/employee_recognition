@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306204931) do
+ActiveRecord::Schema.define(version: 20170313153047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,8 @@ ActiveRecord::Schema.define(version: 20170306204931) do
     t.integer  "granter_id",     null: false
     t.integer  "employee_id"
     t.date     "grant_date",     null: false
-    t.integer  "user_id"
     t.index ["employee_id"], name: "index_awards_on_employee_id", using: :btree
     t.index ["granter_id"], name: "index_awards_on_granter_id", using: :btree
-    t.index ["user_id"], name: "index_awards_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170306204931) do
     t.binary   "signature"
   end
 
-  add_foreign_key "awards", "users"
-  add_foreign_key "awards", "users", column: "employee_id"
-  add_foreign_key "awards", "users", column: "granter_id"
+  add_foreign_key "awards", "users", column: "employee_id", on_delete: :cascade
+  add_foreign_key "awards", "users", column: "granter_id", on_delete: :cascade
 end

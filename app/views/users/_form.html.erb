@@ -39,26 +39,10 @@
     <%= f.radio_button :role_type, 'non_admin' %>
     <%= label :role_type, 'Non-Admin' %>
   </div>
-  <br>
 
-  <div id="signature_area" style="display: none;">
-    <%= f.hidden_field :signature, class: 'signature_pad_input' %>
-    <div class="signature_pad">
-      <div class="signature_pad_body">
-        <canvas style="border:2px dashed teal"></canvas>
-      </div>
-
-      <div class="signature_pad_footer">
-        <div class="lead">
-          Sign above
-        </div>
-        <button type="button" class="btn btn-primary signature_pad_clear">Clear signature</button>
-      </div>
-    </div>
-  </div>
        <br>
   <div class="actions">
-    <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
+    <%= f.submit :submit, :class => 'btn btn-success' %>
   </div>
 <br>
 <% end %>

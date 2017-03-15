@@ -42,12 +42,32 @@
     <%= f.text_field :employee_email %>
   </div><br>
 
-  <div class="panel panel-default">
+<% unless current_user.signature %>
+ <div id="signature_area">
+   <%= f.hidden_field :signature, class: 'signature_pad_input' %>
+   <div class="signature_pad">
+     <div class="signature_pad_body">
+       <canvas style="border:2px dashed #18BC9C"></canvas>
+     </div>
+
+     <div class="signature_pad_footer">
+       <div class="lead">
+         Sign above
+       </div>
+       <button type="button" class="btn btn-primary signature_pad_clear">Clear signature</button>
+     </div>
+   </div>
+ </div>
+<% end %>
+   <br>
+   <div class="actions">
+     <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
+   </div>
+
+  <br><br>
+
+   <div class="panel panel-default">
     <div class="panel-heading"><em>Your name and the current timestamp will be automatically associated with the award upon creation</em></div>
 </div>
-
-  <div class="actions">
-    <%= f.submit :submit, :class => 'btn btn-success signature_pad_save' %>
-  </div>
 
 <% end %>

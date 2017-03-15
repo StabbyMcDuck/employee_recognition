@@ -5,6 +5,7 @@ class Award < ApplicationRecord
              class_name: "User"
 
   belongs_to :granter,
+             autosave: true,
              class_name: "User"
 
   VALID_AWARDS = ["Employee of the Month", "Employee of the Year", "Kudos"].freeze
@@ -40,8 +41,14 @@ class Award < ApplicationRecord
             presence: true
   validates :grant_date,
             presence: true
+  validates :signature,
+            presence: true
 
   # methods
+
+  def signature
+    granter&.signature
+  end
 
   private
 

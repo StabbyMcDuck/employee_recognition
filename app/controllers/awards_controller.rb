@@ -27,7 +27,9 @@ class AwardsController < ApplicationController
   # POST /awards
   # POST /awards.json
   def create
-    @award = Award.new(award_params)
+    current_user.signature ||= award_params['signature']
+
+    @award = Award.new(award_params.except('signature'))
 
     @award.granter = current_user
 
@@ -80,7 +82,7 @@ class AwardsController < ApplicationController
         #File.delete("#{Rails.root}/test.pdf")
         #File.delete("#{Rails.root}/TEST_FILE.png")
 
-        format.html { redirect_to @award, notice: 'Award was successfully created by'}
+        format.html { redirect_to @award, notice: 'Award was successfully created by' }
         format.json { render :show, status: :created, location: @award }
 
       else
@@ -115,19 +117,19 @@ class AwardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_award
-      @award = Award.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_award
+    @award = Award.find(params[:id])
+  end
 
-    def check_admin
-      if current_user.role == 'admin'
-        redirect_to root_path
-      end
+  def check_admin
+    if current_user.role == 'admin'
+      redirect_to root_path
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def award_params
-      params.require(:award).permit(:award_type, :employee_name, :employee_email, :"grant_date(2i)", :"grant_date(3i)", :"grant_date(1i)" )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def award_params
+    params.require(:award).permit(:award_type, :employee_name, :employee_email, :"grant_date(2i)", :"grant_date(3i)", :"grant_date(1i)", :signature)
+  end
 end

@@ -10,16 +10,18 @@
   <%= @user.name %>
 </p>
 
-<p>
-  <strong>Signature:</strong>
-  <%= image_tag @user.signature %>
-</p>
+<% if current_user.role_type == "non-admin" %>
+      <p>
+        <strong>Signature:</strong>
+        <%= image_tag @user.signature %>
+      </p>
+<% end %>
 
-   <% if current_user.role_type == "admin" %>
-            <%= link_to 'Back', '/admin' %>
-   <% end %>
+ <% if current_user.role_type == "admin" %>
+          <%= link_to 'Back', '/admin' %>
+ <% end %>
 
-   <% if current_user.role_type == "non-admin" %>
-            <%= link_to 'Back', '/landingpage' %>
-   <% end %>
+ <% if current_user.role_type == "non-admin" %>
+          <%= link_to 'Back', '/landingpage' %>
+ <% end %>
 

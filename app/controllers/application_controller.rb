@@ -1,10 +1,24 @@
 # frozen_string_literal: true
 
+require 'access_denied'
+
 # Base class used for other controllers.  Add methods that need to be on all controllers to this class
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user_session, :current_user
+
+  rescue_from AccessDenied, with: :render_access_denied
+
+  def render_access_denied
+    respond_to do |format|
+      format.html{
+        render template: 'errors/access_denied',
+               status: 403,
+               layout: 'error'
+      }
+    end
+  end
 
   private
 

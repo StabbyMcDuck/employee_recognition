@@ -1,3 +1,5 @@
+require 'access_denied'
+
 class UsersController < ApplicationController
 
   #before_filter :admin_only, :except => :show
@@ -84,7 +86,7 @@ class UsersController < ApplicationController
 
   def admin_only
     unless current_user.admin?
-      redirect_to :back, :alert => "Access denied."
+      raise AccessDenied
     end
   end
 
@@ -98,7 +100,7 @@ class UsersController < ApplicationController
 
   def non_admin_only
     unless current_user.role_type == 'non_admin'
-      redirect_to landingpage_path
+      raise AccessDenied
     end
   end
 

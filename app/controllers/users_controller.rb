@@ -75,10 +75,17 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
     respond_to do |format|
-      format.html { redirect_to '/admin', notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      if @user == current_user
+        current_user_session.destroy
+        @user.destroy
+        format.html { redirect_to new_user_session_url }
+        format.json { head :no_content }
+      else
+        @user.destroy
+        format.html { redirect_to '/admin', notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
